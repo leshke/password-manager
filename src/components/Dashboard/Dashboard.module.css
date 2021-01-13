@@ -1,0 +1,92 @@
+/*=========TABLE==========*/
+
+.table {
+    width: 75%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: center;
+    border: 1px solid #000000;
+    background-color: #4caf50;
+    color: #dfdddd;
+    padding: 7px;
+}
+
+.table td {
+    border: 1px solid #dfdddd;
+    padding: 10px;
+    min-width: 180px;
+}
+.table td:last-child {
+    display: flex;
+    justify-content: space-around;
+}
+
+.table tr:nth-child(even) {
+    background: #f1f1f1;
+}
+
+.table td input{
+    width: calc(100% - 8px);
+}
+
+/*=========MODAL==========*/
+
+.modalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalWindow {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 7px;
+}
+
+.closeModal {
+    display: block;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: end;
+    margin-left: auto;
+}
+
+.modalContent label {
+    display: block;
+    width: 20%;
+    font-size: larger;
+    color: #474747;
+    margin-bottom: 7px;
+    margin: 0 auto 10px;
+}
+
+.modalContent form {
+    text-align: center;
+}
+
+.modalContent input {
+    padding: 5px;
+    font-size: large;
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.modalContent input::placeholder {
+    font-style: italic;
+    color: #dfdddd;
+}
+

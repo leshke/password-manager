@@ -1,0 +1,33 @@
+.registration, .login {
+    padding: 30px;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #d6d6d6;
+    border-radius: 10px;
+    color: #868686;
+}
+
+.registration label, .login label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.registration h3, .login h3 {
+    color: #005252;
+}
+
+.registration input, .login input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 20px);
+    border: none;
+}
+
+.registration input::placeholder, .login input::placeholder {
+    font-style: italic;
+    color: #cccccc;
+}
+
+.login form span {
+    color: red
+}
