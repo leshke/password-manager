@@ -3,7 +3,8 @@ import { useLocalStorage } from './hook/useLocalStorage';
 
 const initialState = {
     users: [],
-    passwords: []
+    passwords: [],
+    isAuth: false
 }
 
 const Context = React.createContext()
@@ -13,6 +14,7 @@ export const AppContext = () => useContext(Context)
 const AppProvider = ({ children }) => {
     const [state, setState] = useLocalStorage('passwords', initialState.passwords)
     const [users, setUser] = useLocalStorage('users', initialState.users)
+    const [auth, setAuth] = useLocalStorage('auth', initialState.isAuth)
 
     const addUser = (u) => {
         const user = {
@@ -60,6 +62,8 @@ const AppProvider = ({ children }) => {
         <Context.Provider value={{
             state,
             users,
+            auth,
+            setAuth,
             addUser,
             addPassword,
             removePassword,

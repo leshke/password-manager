@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { AppContext } from "../../state";
 import s from '../SignUp/SignUp.module.css'
 
 const SignIn = ({ history }) => {
+    const { setAuth } = AppContext()
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
@@ -20,6 +22,7 @@ const SignIn = ({ history }) => {
         const userData = JSON.parse(localStorage.getItem('users'));
         const user = userData.find(item => item.login === name && item.password === psw)
         if (user) {
+            setAuth(true)
             history.push(`/dashboard/${user.id}`)
         }
         else {
@@ -28,8 +31,7 @@ const SignIn = ({ history }) => {
     }
 
     return <div className={s.login}>
-        <h3>Congrats You are authorized!</h3>
-        <span>Enter your login and password</span>
+        <h3>Enter your login and password</h3>
         <form>
             <label htmlFor="uname">
                 <b>Username</b>
