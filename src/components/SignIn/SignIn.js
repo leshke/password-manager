@@ -19,10 +19,11 @@ const SignIn = ({ history }) => {
 
     const onSubmit = (name, psw) => (e) => {
         e.preventDefault()
-        const userData = JSON.parse(localStorage.getItem('users'));
+        const userData = JSON.parse(localStorage.getItem('state'));
         const user = userData.find(item => item.login === name && item.password === psw)
+
         if (user) {
-            setAuth(true)
+            setAuth(user.id)
             history.push(`/dashboard/${user.id}`)
         }
         else {

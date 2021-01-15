@@ -1,11 +1,17 @@
+import { useHistory } from "react-router-dom";
 import { AppContext } from "../../state";
 import s from '../SignUp/SignUp.module.css'
 
 const Logout = () => {
-    const {setAuth } = AppContext()
+    const { state, setLogout } = AppContext()
+
+    const authorizedUser = state.find(item => item.isAuth)
+
+    const history = useHistory()
 
     const onLogout = () => {
-        setAuth(false)
+        setLogout(authorizedUser.id)
+        history.push('/login')
     }
 
     return <div className={s.logout}>

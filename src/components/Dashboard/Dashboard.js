@@ -7,8 +7,15 @@ import Modal from './Modal'
 import PasswordItem from './PasswordItem'
 
 const Dashboard = () => {
-    const { state, auth } = AppContext()
+    const { state } = AppContext()
+
     const [open, settoggleModal] = useState(false)
+
+    const authorizedUser = state.find(item => item.isAuth)//authorized user
+
+    if (!authorizedUser) return <Redirect to="/login" />
+
+    const data = authorizedUser.passwordData.map(item => <PasswordItem key={item.id} {...item} />)
 
     const openModal = () => {
         settoggleModal(true)
@@ -17,10 +24,6 @@ const Dashboard = () => {
     const closeModal = () => {
         settoggleModal(false)
     }
-
-    const data = state.map(item => <PasswordItem key={item.id} {...item} />)
-
-    if (!auth) return <Redirect to="/login" />
 
     return <>
         <Logout />
@@ -37,10 +40,8 @@ const Dashboard = () => {
                 {data}
             </tbody>
         </table>
-        {state.length === 0 ? <h2>Add new password</h2> : ''}
+        {data.length === 0 ? <h2>Add new password</h2> : ''}
     </>
 }
 
 export default Dashboard
-
-
