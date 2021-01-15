@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { AppContext } from "../../state";
 import s from '../SignUp/SignUp.module.css'
 
@@ -32,7 +33,7 @@ const SignIn = ({ history }) => {
     }
 
     return <div className={s.login}>
-        <h3>Enter your login and password</h3>
+        <h3>Sign IN</h3>
         <form>
             <label htmlFor="uname">
                 <b>Username</b>
@@ -47,6 +48,8 @@ const SignIn = ({ history }) => {
             </div>
             {error ? <span>Wrong data</span> : ''}
         </form>
+        <hr />
+        <NavLink to='/registration'>Create new account</NavLink>
     </div>
 }
 

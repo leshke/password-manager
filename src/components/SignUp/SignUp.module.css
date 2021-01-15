@@ -14,6 +14,7 @@
 
 .registration h3, .login h3 {
     color: #005252;
+    margin: 10px 0;
 }
 
 .registration input, .login input {
@@ -30,4 +31,13 @@
 
 .login form span {
     color: red
+}
+
+.registration a, .login a {
+    text-decoration: none;
+    color: #4b79db;
+}
+
+.registration a:hover, .login a:hover {
+    text-decoration: underline;
 }

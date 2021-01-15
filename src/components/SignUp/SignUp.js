@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { AppContext } from "../../state";
 import s from './SignUp.module.css'
 
 const SignUp = ({ history }) => {
-  const { addUser } = AppContext()
+  const { addUser, state } = AppContext()
 
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
 
   const onChangeInput = (e) => {
     if (e.target.name === 'name') {
@@ -18,11 +20,15 @@ const SignUp = ({ history }) => {
   }
 
   const onSubmit = (name, psw) => (e) => {
-    if (name && psw) {
-      e.preventDefault()
+    e.preventDefault()
+    const user = state.some(item => item.login === name)
+    if (!user) {
       const user = { name, psw }
       addUser(user)
       history.push("/login")
+    }
+    else {
+      setError(!error)
     }
   }
 
@@ -37,7 +43,11 @@ const SignUp = ({ history }) => {
       <div>
         <button className='btn' onClick={onSubmit(login, password)} type="submit">Create account</button>
       </div>
+      {error ? <span className='error'>Existing Login name</span> : ''}
     </form>
+    <hr />
+    <span>If you have an existing account </span>
+    <NavLink to='/login'> go to Login page</NavLink>
   </div >
 }
 

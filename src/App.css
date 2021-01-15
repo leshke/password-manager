@@ -48,7 +48,12 @@ h2 {
 .btn.edit {
   background-color: #f5c528;
 }
+
 .btn.logout {
   background-color: #000000;
   margin-left: auto;
+}
+
+.error {
+  color: #f52828;
 }
