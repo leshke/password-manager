@@ -3,7 +3,7 @@ import { useLocalStorage } from './hook/useLocalStorage';
 
 const initialState = []
 
-const Context = React.createContext()
+export const Context = React.createContext()
 
 export const AppContext = () => useContext(Context)
 

@@ -14,7 +14,7 @@ const PasswordItem = ({ login, password, hiddenPassword, name, id }) => {
     })
 
     const handleRemove = (e) => {
-        const id = e.currentTarget.parentNode.parentNode.id
+        const id = e.currentTarget.id
         removePassword(id)
     }
 
@@ -23,7 +23,7 @@ const PasswordItem = ({ login, password, hiddenPassword, name, id }) => {
     }
 
     const saveEditedData = (e) => {
-        const id = Number(e.currentTarget.parentNode.parentNode.id)
+        const id = Number(e.currentTarget.id)
         editPassword(id, value)
         setEditMode(!editMode)
     }
@@ -44,28 +44,26 @@ const PasswordItem = ({ login, password, hiddenPassword, name, id }) => {
         setDecrypt(!decrypt)
     }
 
-    return <tr id={id}>
+    return <tr>
         {
             editMode ?
-                <td><input onChange={onChangeInput} name='service' value={value.service}></input></td> :
-                <td>{name}</td>
-        }
-        {
-            editMode ?
-                <td><input onChange={onChangeInput} name='login' value={value.login}></input></td> :
-                <td>{login}</td>
-        }
-        {
-            editMode ?
-                <td><input onChange={onChangeInput} name='psw' value={value.password}></input></td> :
-                <td onClick={hidePassword}>{decrypt ? password : hiddenPassword}</td>
+                <>
+                    <td><input onChange={onChangeInput} name='service' value={value.service}></input></td>
+                    <td><input onChange={onChangeInput} name='login' value={value.login}></input></td>
+                    <td><input onChange={onChangeInput} name='psw' value={value.password}></input></td>
+                </> :
+                <>
+                    <td>{name}</td>
+                    <td>{login}</td>
+                    <td onClick={hidePassword}>{decrypt ? password : hiddenPassword}</td>
+                </>
         }
         <td>
-            <button className='btn del' onClick={handleRemove}>delete</button>
+            <button id={id} className='btn del' onClick={handleRemove}>delete</button>
             {
                 !editMode ?
-                    <button className='btn edit' onClick={handleEdit}>edit</button> :
-                    <button className='btn save' onClick={saveEditedData}>save</button>
+                    <button id={id} className='btn edit' onClick={handleEdit}>edit</button> :
+                    <button id={id} className='btn save' onClick={saveEditedData}>save</button>
             }
         </td>
     </tr>

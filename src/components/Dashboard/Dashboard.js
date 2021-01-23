@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { AppContext } from '../../state'
+import { AppContext} from '../../state'
 import Logout from '../Logout/Logout'
 import s from './Dashboard.module.css'
 import Modal from './Modal'

@@ -4,7 +4,7 @@ import { AppContext } from "../../state";
 import s from '../SignUp/SignUp.module.css'
 
 const SignIn = ({ history }) => {
-    const { setAuth } = AppContext()
+    const { setAuth, state } = AppContext()
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
@@ -20,8 +20,7 @@ const SignIn = ({ history }) => {
 
     const onSubmit = (name, psw) => (e) => {
         e.preventDefault()
-        const userData = JSON.parse(localStorage.getItem('state'));
-        const user = userData.find(item => item.login === name && item.password === psw)
+        const user = state.find(item => item.login === name && item.password === psw)
 
         if (user) {
             setAuth(user.id)
